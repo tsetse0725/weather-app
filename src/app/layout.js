@@ -4,6 +4,7 @@ import { LogoLeft } from "@/app/_components/LogoLeft";
 import { LogoRight } from "@/app/_components/LogoRight";
 import { Ring } from "@/app/_components/Ring";
 
+// Google fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,33 +21,29 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const toirgs = [
-    "w-[280px] h-[280px]",
-    "w-[500px] h-[500px]",
-    "w-[800px] h-[800px]",
-  ];
+  const rings = [280, 500, 800]; // ⬅️ Зөвхөн тоон хэмжээ
 
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen overflow-hidden relative`}
       >
-        <div className="z-50 absolute inset-0 flex items-center justify-center">
-          {toirgs.map((el, index) => {
-            return <Ring key={index} el={el} />;
-          })}
-          <div className="absolute left-[49.5%] top-[40.5%] z-51 w-10 h-10 bg-white"></div>
-          <div className="absolute left-[50%] top-[38%] z-51 w-15 h-15 bg-black rounded-bl-4xl"></div>
-          <div className="relative z-50 flex gap-3 border border-gray-300 rounded-full p-4 bg-white">
+        {/* 🔵 App content */}
+        <main className="relative z-10 w-full h-full">{children}</main>
+
+        {/* 🟣 Center Ring + Logo */}
+        <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+          {/* Цэвэрхэн SVG цагирагууд */}
+          {rings.map((size, index) => (
+            <Ring key={index} size={size} />
+          ))}
+
+          {/* Төв логонууд */}
+          <div className="relative z-40 flex gap-3 border border-gray-300 rounded-full p-4 bg-white dark:bg-black shadow-md">
             <LogoLeft />
             <LogoRight />
           </div>
-          <div className="absolute left-[49.4%] top-[55.2%] z-51 w-10 h-10 bg-white"></div>
-          <div className="absolute left-[50%] top-[55.5%] z-51 w-15 h-15 bg-black rounded-tl-4xl"></div>
         </div>
-
-
-        <div>{children}</div>
       </body>
     </html>
   );
