@@ -4,7 +4,7 @@ import { LogoLeft } from "@/app/_components/LogoLeft";
 import { LogoRight } from "@/app/_components/LogoRight";
 import { Ring } from "@/app/_components/Ring";
 
-// Google fonts
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,24 +21,24 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const rings = [280, 500, 800]; // ⬅️ Зөвхөн тоон хэмжээ
+  const rings = [280, 500, 800]; 
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen overflow-hidden relative`}
       >
-        {/* 🔵 App content */}
+
         <main className="relative z-10 w-full h-full">{children}</main>
 
-        {/* 🟣 Center Ring + Logo */}
+
         <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
-          {/* Цэвэрхэн SVG цагирагууд */}
+
           {rings.map((size, index) => (
             <Ring key={index} size={size} />
           ))}
 
-          {/* Төв логонууд */}
+
           <div className="relative z-40 flex gap-3 border border-gray-300 rounded-full p-4 bg-white dark:bg-black shadow-md">
             <LogoLeft />
             <LogoRight />

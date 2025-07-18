@@ -8,25 +8,25 @@ export default function CountrySelector({ onCitySelect }) {
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
 
-  // 🌍 Fetch all countries
+
   useEffect(() => {
     fetch("https://countriesnow.space/api/v0.1/countries")
       .then((res) => res.json())
       .then((data) => {
-        setCountries(data.data); // [{country: "Afghanistan", cities: [...]}, ...]
+        setCountries(data.data); 
       })
       .catch((err) => console.error("Country fetch error:", err));
   }, []);
 
-  // 🏙️ Update cities when a country is selected
+
   useEffect(() => {
     if (!selectedCountry) return;
     const countryObj = countries.find((c) => c.country === selectedCountry);
     setCities(countryObj?.cities || []);
-    setSelectedCity(""); // reset city
+    setSelectedCity(""); 
   }, [selectedCountry]);
 
-  // 🔄 Handle city change and notify parent
+
   const handleCityChange = (e) => {
     const city = e.target.value;
     setSelectedCity(city);
@@ -35,7 +35,7 @@ export default function CountrySelector({ onCitySelect }) {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      {/* 🌐 Country Selector */}
+
       <select
         className="p-2 border rounded w-64"
         value={selectedCountry}
@@ -49,7 +49,7 @@ export default function CountrySelector({ onCitySelect }) {
         ))}
       </select>
 
-      {/* 🏙️ City Selector */}
+
       {cities.length > 0 && (
         <select
           className="p-2 border rounded w-64"

@@ -20,10 +20,10 @@ export default function Home() {
       try {
         const res = await fetch(`${WEATHER_API}&q=${selectedCity}`);
         const data = await res.json();
-        console.log("🌤 Weather API response:", data);
+        console.log(" Weather API response:", data);
         setWeatherData(data);
       } catch (err) {
-        console.error("⛔ Weather API fetch error:", err);
+        console.error(" Weather API fetch error:", err);
       }
     };
 
@@ -33,7 +33,7 @@ export default function Home() {
   const date = new Date();
   const formattedDate = format(date, "MM.dd.yyyy");
 
-  // 🌡 Цаг агаарын дата
+
   const dayTemp = weatherData?.forecast?.forecastday[0]?.day?.maxtemp_c ?? 26.8;
   const nightTemp = weatherData?.forecast?.forecastday[0]?.day?.mintemp_c ?? 13.7;
   const dayCondition = weatherData?.forecast?.forecastday[0]?.day?.condition?.text ?? "Sunny";
@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden flex flex-col">
-      {/* 🔍 Search input */}
+
       <div className="w-full flex justify-center mt-6 z-20">
         <Search
           value={inputValue}
@@ -54,7 +54,7 @@ export default function Home() {
         />
       </div>
 
-      {/* 🔘 Center logo */}
+ 
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
         <Image
           src="/rings-center-logo.svg"
@@ -65,7 +65,7 @@ export default function Home() {
         />
       </div>
 
-      {/* ☀️🌙 Day/Night cards */}
+
       <div className="relative z-10 flex flex-grow">
         <div className="w-1/2 flex items-center justify-center bg-[#f4f4f4]">
           <Card

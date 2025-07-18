@@ -1,4 +1,4 @@
-// src/app/_components/Ring.jsx
+
 export const Ring = ({ size }) => {
   return (
     <svg

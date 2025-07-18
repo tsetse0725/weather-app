@@ -16,30 +16,29 @@ export const Card = ({ date, city, path, degree, something, variant = "day" }) =
           : "bg-white/10 border-white/30 text-black"
         }`}
     >
-      {/* 🗓️ Date */}
+
       <p className="text-sm text-center text-gray-400">{date}</p>
 
-      {/* 📍 City */}
+
       <div className="flex items-center justify-center gap-2">
         <p className="text-2xl font-bold">{city}</p>
         <MapPin size={20} color={isNight ? "#ccc" : "gray"} />
       </div>
 
-      {/* 🌞 Image */}
+
       <div className="flex justify-center mt-4 mb-2">
         <Image src={path} alt="weather icon" width={230} height={230} />
       </div>
 
-      {/* 🌡️ Degree */}
+
       <p className="text-[64px] font-bold text-center">
         {degree}
         <span className="text-4xl align-top">&deg;</span>
       </p>
 
-      {/* 🌤️ Condition */}
+
       <p className="text-center text-lg text-yellow-400">{something}</p>
 
-      {/* 🧭 Icons */}
       <SomeIcons isNight={isNight} />
     </div>
   );
